@@ -1,11 +1,7 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OrderManagement.Application.Customers.Requests;
 
-namespace OrderManagement.Application.Customers
+namespace OrderManagement.Application.Validators
 {
     public class CreateCustomerValidator : AbstractValidator<CreateCustomerRequest>
     {

@@ -1,11 +1,8 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using OrderManagement.Application.Customers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OrderManagement.Application.Orders;
+using OrderManagement.Application.Products;
 
 namespace OrderManagement.Application
 {
@@ -14,6 +11,9 @@ namespace OrderManagement.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderService, OrderService>();
+
 
             // Registers every FluentValidation validator in this project
             services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);

@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OrderManagement.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderManagement.Infrastructure.Configurations
 {
@@ -16,6 +11,11 @@ namespace OrderManagement.Infrastructure.Configurations
             builder.HasKey(i => i.Id);
 
             builder.Property(i => i.UnitPrice).HasPrecision(18, 2);
+
+            builder.HasOne(i => i.Product)
+               .WithMany()
+               .HasForeignKey(i => i.ProductId)
+               .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

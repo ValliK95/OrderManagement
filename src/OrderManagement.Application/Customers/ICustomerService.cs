@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OrderManagement.Application.Customers.Requests;
+using OrderManagement.Application.Customers.Responses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

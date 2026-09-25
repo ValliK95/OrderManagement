@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using OrderManagement.Application.Common.Exceptions;
 using OrderManagement.Application.Common.Interfaces;
+using OrderManagement.Application.Customers.Requests;
+using OrderManagement.Application.Customers.Responses;
 using OrderManagement.Domain.Entities;
 
 

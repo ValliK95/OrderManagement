@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrderManagement.Application.Customers;
+using OrderManagement.Application.Customers.Requests;
+using OrderManagement.Application.Customers.Responses;
 
 
 namespace OrderManagement.Api

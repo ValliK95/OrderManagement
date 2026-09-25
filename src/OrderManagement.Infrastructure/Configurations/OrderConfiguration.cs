@@ -18,6 +18,18 @@ namespace OrderManagement.Infrastructure.Configurations
             builder.Property(o => o.Status)
                    .HasConversion<string>()
                    .HasMaxLength(20);
+
+            builder.Ignore(o => o.TotalAmount);
+
+            builder.HasOne(o => o.Customer)
+                   .WithMany(c => c.Orders)
+                   .HasForeignKey(o => o.CustomerId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(o => o.Items)
+                   .WithOne(i => i.Order)
+                   .HasForeignKey(i => i.OrderId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
