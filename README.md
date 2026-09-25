@@ -12,6 +12,7 @@ A RESTful Web API to manage customers, products and orders, built with .NET 8, E
 | Validation | FluentValidation |
 | API documentation | Swagger / OpenAPI (Swashbuckle) |
 | Error handling | .NET 8 `IExceptionHandler` with ProblemDetails |
+| Testing | xUnit with EF Core in-memory database |
 
 ## Project Structure
 
@@ -21,6 +22,8 @@ src/
   OrderManagement.Application     Services, DTOs, validators, IAppDbContext
   OrderManagement.Domain          Entities and business rules (no dependencies)
   OrderManagement.Infrastructure  AppDbContext, EF Core configurations, migrations
+tests/
+  OrderManagement.Tests           Unit tests (xUnit, EF Core in-memory database)
 postman/                          Postman collection
 ```
 
@@ -171,7 +174,9 @@ A Postman collection is included in the `postman` folder. Import it, set the `ba
 
 ## Running Tests
 
+```bash
 dotnet test
+```
 
 The test project (`tests/OrderManagement.Tests`) contains 14 unit tests:
 
