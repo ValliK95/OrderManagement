@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using OrderManagement.Application.Products.Requests;
 
-namespace OrderManagement.Application.Validators
+namespace OrderManagement.Application.Products.Validators
 {
     public class CreateProductValidator : AbstractValidator<CreateProductRequest>
     {
