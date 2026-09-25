@@ -169,6 +169,22 @@ A Postman collection is included in the `postman` folder. Import it, set the `ba
 - All error responses use the standard ProblemDetails format.
 - Unexpected errors return `500` with a generic message; the real details are only written to the log.
 
+## Running Tests
+
+dotnet test
+
+The test project (`tests/OrderManagement.Tests`) contains 14 unit tests:
+
+- **Order status rules** (`OrderStatusTests`): checks which status changes are allowed
+  (for example Pending → Confirmed) and which are blocked (for example Delivered → Pending).
+- **Order service** (`OrderServiceTests`):
+  - Creating an order reduces stock and starts the order as Pending
+  - Insufficient stock rejects the order and leaves stock unchanged
+  - Unknown customer returns not found
+  - Cancelling an order returns the items to stock
+
+The order service tests use the EF Core in-memory database, so SQL Server is not needed to run them.
+
 ## Libraries Used
 
 | Library | Project | Purpose |
@@ -178,6 +194,8 @@ A Postman collection is included in the `postman` folder. Import it, set the `ba
 | Microsoft.EntityFrameworkCore.Design | Api | Design-time support for EF Core migrations |
 | FluentValidation.DependencyInjectionExtensions | Application | Request validation and automatic validator registration |
 | Swashbuckle.AspNetCore | Api | Swagger / OpenAPI documentation and UI |
+| xUnit | Tests | Unit testing framework |
+| Microsoft.EntityFrameworkCore.InMemory | Tests | In-memory database for unit tests |
 
 All libraries are open source and available on NuGet.
 
@@ -187,6 +205,5 @@ All libraries are open source and available on NuGet.
 
 - **Concurrency control on stock:** in a production system, I would add a `RowVersion` column to Product for optimistic concurrency, so two simultaneous orders cannot oversell the same stock. It was left out to keep this task focused on the stated requirements.
 - **Pagination** for the "get all" endpoints.
-- **Unit and integration tests**, especially for order creation and status rules.
 - **Authentication** (for example JWT) and role-based access.
 - **Health checks** and structured logging.
